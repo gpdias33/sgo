@@ -1,7 +1,13 @@
-from django.forms import ModelForm
-from .models import Funcao
+from django import forms
+from . import models
 
-class FuncaoForm(ModelForm):
+class FuncaoForm(forms.ModelForm):
     class Meta:
-        model= Funcao
-        fields = '__all__'
+        model = models.Funcao
+        fields = ['nome',]
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'name': 'Nome',
+        }
