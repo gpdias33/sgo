@@ -28,7 +28,7 @@ urlpatterns = [
     # path('', include('exames.urls')),
     path('', include('riscos.urls')),
     path('', include('setores.urls')),
-    # path('', include('tiposexames.urls')),
+    path('', include('tiposexames.urls')),
     # path('', include('tiposriscos.urls')),
 
 ]
