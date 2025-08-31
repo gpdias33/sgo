@@ -1,7 +1,13 @@
-from django.forms import ModelForm
-from .models import Setor
+from django import forms
+from . import models
 
-class SetorForm(ModelForm):
+class SetorForm(forms.ModelForm):
     class Meta:
-        model= Setor
-        fields = '__all__'
+        model = models.Setor
+        fields = ['nome',]
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'nome': 'Nome',
+        }

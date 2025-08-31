@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SGO - Funções
+SGO - Setores
 {% endblock %}
 
 {% block content %}
 
 <div class="row mb-3">
-  <h3 class="display-4">Lista de Funções</h3>
+  <h3 class="display-4">Lista de Setores</h3>
   <div class="col-md-6">
-    <form method="get" action="{% url 'funcao_list' %}">
+    <form method="get" action="{% url 'setor_list' %}">
       <div class="input-group">
         <input type="text" class="form-control" name="nome" placeholder="Nome" value="{{ request.GET.nome }}">
         <button type="submit" class="btn btn-primary">
@@ -18,10 +18,10 @@ SGO - Funções
       </div>
     </form>
   </div>
-  {% if perms.funcoes.add_funcao %}
+  {% if perms.setores.add_setor %}
   <div class="col-md-6">
-    <a href="{% url 'funcao_create' %}" class="btn btn-success float-end">
-      <i class="bi bi-plus"></i> Nova Função
+    <a href="{% url 'setor_create' %}" class="btn btn-success float-end">
+      <i class="bi bi-plus"></i> Novo Setor
     </a>
   </div>
   {% endif %}
@@ -37,27 +37,27 @@ SGO - Funções
       </tr>
     </thead>
     <tbody>
-      {% for funcao in funcoes %}
+      {% for setor in setores %}
       <tr>
         <td>
-          <a href="{% url 'funcao_detail' funcao.id %}" class="text-primary fw-semibold">
-            {{ funcao.id }}
+          <a href="{% url 'setor_detail' setor.id %}" class="text-primary fw-semibold">
+            {{ setor.id }}
           </a>
         </td>
-        <td>{{ funcao.nome }}</td>
+        <td>{{ setor.nome }}</td>
         <td>
-          <a href="{% url 'funcao_detail' funcao.id %}" class="btn btn-info btn-sm">
+          <a href="{% url 'setor_detail' setor.id %}" class="btn btn-info btn-sm">
             <i class="bi bi-eye"></i>
           </a>
 
-          {% if perms.funcoes.change_funcao %}
-          <a href="{% url 'funcao_update' funcao.id %}" class="btn btn-warning btn-sm">
+          {% if perms.setores.change_setor %}
+          <a href="{% url 'setor_update' setor.id %}" class="btn btn-warning btn-sm">
             <i class="bi bi-pencil"></i>
           </a>
           {% endif %}
 
-          {% if perms.funcoes.delete_funcao %}
-          <a href="{% url 'funcao_delete' funcao.id %}" class="btn btn-danger btn-sm btn-delete">
+          {% if perms.setores.delete_setor %}
+          <a href="{% url 'setor_delete' setor.id %}" class="btn btn-danger btn-sm btn-delete">
             <i class="bi bi-trash"></i>
           </a>
           {% endif %}

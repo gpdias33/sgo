@@ -2,6 +2,7 @@ from rest_framework import generics
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from tiposriscos.models import TipoRisco
 from . import models, forms, serializers
 
 
@@ -15,9 +16,13 @@ class RiscoListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         nome = self.request.GET.get('nome')
+        tiporisco = self.request.GET.get('tiporisco')
 
         if nome:
             queryset = queryset.filter(nome__icontains=nome)
+
+        if tiporisco:
+            queryset = queryset.filter(tiporisco__id=tiporisco)
 
         return queryset
 

@@ -4,10 +4,12 @@ from . import models
 class RiscoForm(forms.ModelForm):
     class Meta:
         model = models.Risco
-        fields = ['nome',]
+        fields = ['nome', 'tiporisco']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
+            'tiporisco': forms.Select(attrs={'class': 'form-control'}),
         }
         labels = {
             'nome': 'Nome',
+            'tiporisco': 'Tipo de Risco',
         }
