@@ -1,6 +1,100 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block content %}
-<div id="corpo2"></div>
+    <!-- Home Content -->
+    <div id="homeContent">
+        <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Bem-vindo ao Sistema de Gestão de Medicina Ocupacional</h2>
+            <p class="text-gray-600 mb-4">
+                Este sistema foi desenvolvido para auxiliar na gestão dos processos de medicina ocupacional da sua empresa,
+                proporcionando controle sobre exames, riscos ocupacionais, setores e muito mais.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <!-- Funções Card -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                        <i class="bi bi-people-fill text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Funções</h3>
+                </div>
+                <p class="text-gray-600 text-sm">
+                    Cadastre as diferentes funções exercidas pelos colaboradores na empresa, com descrição das atividades e requisitos.
+                </p>
+                <a href="#funcoes" class="mt-3 inline-flex items-center text-blue-500 text-sm">
+                    Gerenciar funções <i class="bi bi-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Exames Card -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                        <i class="bi bi-clipboard2-pulse text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Exames</h3>
+                </div>
+                <p class="text-gray-600 text-sm">
+                    Controle os exames médicos ocupacionais realizados pelos colaboradores, com datas, resultados e prazos para renovação.
+                </p>
+                <a href="#exames" class="mt-3 inline-flex items-center text-blue-500 text-sm">
+                    Gerenciar exames <i class="bi bi-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Riscos Card -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                        <i class="bi bi-exclamation-triangle-fill text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800">Riscos</h3>
+                </div>
+                <p class="text-gray-600 text-sm">
+                    Registre os riscos ocupacionais associados a cada função ou setor, com níveis de exposição e medidas de controle.
+                </p>
+                <a href="#riscos" class="mt-3 inline-flex items-center text-blue-500 text-sm">
+                    Gerenciar riscos <i class="bi bi-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-lg font-medium text-gray-800 mb-4">Atividades Recentes</h3>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                        <i class="bi bi-clipboard2-plus text-blue-500"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-800">Novo exame adicionado</p>
+                        <p class="text-xs text-gray-500">Exame admissional para João Silva - 15/06/2023</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                        <i class="bi bi-building text-blue-500"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-800">Setor atualizado</p>
+                        <p class="text-xs text-gray-500">Almoxarifado - Novos riscos cadastrados</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                        <i class="bi bi-shield-exclamation text-blue-500"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-800">Novo tipo de risco</p>
+                        <p class="text-xs text-gray-500">Risco ergonômico - Movimentação de cargas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock%}

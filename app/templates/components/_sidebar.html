@@ -1,79 +1,76 @@
-<div class="row flex-nowrap">
-  <div class="col-auto col-md-0 col-xl-0 px-0 bg-dark">
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
-      <button class="btn btn-dark d-block d-sm-none mb-3" type="button" data-bs-toggle="collapse"
-        data-bs-target="#menuCollapse" aria-expanded="false" aria-controls="menuCollapse">
-        <i class="bi bi-list fs-4"></i>
-      </button>
-      <div class="collapse d-sm-block" id="menuCollapse">
-        <ul class="nav flex-column align-items-start" id="menu">
-          <li>
-            <a href="{% url 'home' %}" class="nav-link px-0 align-middle">
-              <i class="bi bi-speedometer2 fs-4"></i>
-              <span class="ms-1">Dashboard</span>
-            </a>
-          </li>
-          {% if perms.suppliers.view_supplier %}
-            <li>
-              <a href="{% url 'supplier_list' %}" class="nav-link px-0 align-middle">
-                <i class="bi bi-truck fs-4"></i>
-                <span class="ms-1">Fornecedores</span>
-              </a>
-            </li>
-          {% endif %}
-          {% if perms.brands.view_brand %}
-            <li>
-              <a href="{% url 'brand_list' %}" class="nav-link px-0 align-middle">
-                <i class="bi bi-shop fs-4"></i>
-                <span class="ms-1">Marcas</span>
-              </a>
-            </li>
-          {% endif %}
-          {% if perms.categories.view_category %}
-            <li>
-              <a href="{% url 'category_list' %}" class="nav-link px-0 align-middle">
-                <i class="bi bi-tags fs-4"></i>
-                <span class="ms-1">Categorias</span>
-              </a>
-            </li>
-          {% endif %}
-          {% if perms.products.view_product %}
-            <li>
-              <a href="{% url 'product_list' %}" class="nav-link px-0 align-middle">
-                <i class="bi bi-box-seam fs-4"></i>
-                <span class="ms-1">Produtos</span>
-              </a>
-            </li>
-          {% endif %}
-          {% if perms.inflows.view_inflow %}
-            <li>
-              <a href="{% url 'inflow_list' %}" class="nav-link px-0 align-middle">
-                <i class="bi bi-arrow-down-left-square fs-4"></i>
-                <span class="ms-1">Entradas</span>
-              </a>
-            </li>
-          {% endif %}
-          {% if perms.outflows.view_outflow %}
-            <li>
-              <a href="{% url 'outflow_list' %}" class="nav-link px-0 align-middle">
-                <i class="bi bi-arrow-up-right-square fs-4"></i>
-                <span class="ms-1">Saídas</span>
-              </a>
-            </li>
-          {% endif %}
-          <li class="nav-item">
-            {% if user.is_authenticated %}
-            <form action="{% url 'logout' %}" method="post" id="logout-form" class="nav-link px-0 align-middle">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-link text-decoration-none text-reset nav-link px-0 align-middle">
-                <i class="bi bi-box-arrow-right fs-4 align-middle"></i>
-                <span class="ms-1 align-middle">Sair</span>
-              </button>
-            </form>
-            {% endif %}
-          </li>
-        </ul>
+{% load static %}
+<div class="d-flex">
+  <!-- Sidebar -->
+  <div class="sidebar bg-white shadow-sm w-64 fixed h-full">
+    <div class="p-4 border-b border-gray-200">
+      <h1 class="text-xl font-semibold text-blue-600">
+          <i class="bi bi-heart-pulse-fill mr-2"></i>MedOcup
+      </h1>
+      <p class="text-xs text-gray-500">Gestão de Medicina Ocupacional</p>
+    </div>
+    <div class="p-4">
+      <ul class="space-y-2">
+        <li>
+          <a href="{% url 'home' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg active-link">
+            <i class="bi bi-house-door mr-3 text-blue-500"></i>
+            <span class="ms-1">Home</span>
+          </a>
+        </li>
+        {% if perms.funcoes.view_funcao %}
+        <li>
+          <a href="{% url 'funcao_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+            <i class="bi bi-people-fill mr-3 text-blue-500"></i>
+            <span class="ms-1">Funções</span>
+          </a>
+        </li>
+        {% endif %}
+        <li>
+          <a href="{% url 'grupo_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+              <i class="bi bi-collection-fill mr-3 text-blue-500"></i>
+              <span>Grupos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#exames" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+              <i class="bi bi-clipboard2-pulse mr-3 text-blue-500"></i>
+              <span>Exames</span>
+          </a>
+        </li>
+        <li>
+          <a href="#riscos" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+              <i class="bi bi-exclamation-triangle-fill mr-3 text-blue-500"></i>
+              <span>Riscos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#setores" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+              <i class="bi bi-building-fill mr-3 text-blue-500"></i>
+              <span>Setores</span>
+          </a>
+        </li>
+        <li>
+          <a href="#tipos-exames" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+              <i class="bi bi-clipboard2-check-fill mr-3 text-blue-500"></i>
+              <span>Tipos de Exames</span>
+          </a>
+        </li>
+        <li>
+          <a href="#tipos-riscos" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+              <i class="bi bi-shield-exclamation mr-3 text-blue-500"></i>
+              <span>Tipos de Riscos</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="absolute bottom-0 w-full p-4 border-t border-gray-200">
+      <div class="flex items-center">
+        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+          <i class="bi bi-person-fill text-blue-500"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm font-medium text-gray-700">Usuário Admin</p>
+          <p class="text-xs text-gray-500">Administrador</p>
+        </div>
       </div>
-      <hr>
     </div>
   </div>

@@ -45,14 +45,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
 
-    'exames',
     'funcoes',
     'grupos',
+    'exames',
     'riscos',
     'setores',
     'tiposexames',
     'tiposriscos',
 ]
+
+# Default login and logout redirects
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,12 +136,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# Default login and logout redirects
-LOGIN_URL = 'login'
-
-LOGIN_REDIRECT_URL = '/accounts/login'
-LOGOUT_REDIRECT_URL = '/accounts/login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
