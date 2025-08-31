@@ -1,7 +1,13 @@
-from django.forms import ModelForm
-from .models import TipoRisco
+from django import forms
+from . import models
 
-class TipoRiscoForm(ModelForm):
+class TipoRiscoForm(forms.ModelForm):
     class Meta:
-        model= TipoRisco
-        fields = '__all__'
+        model = models.TipoRisco
+        fields = ['nome',]
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'nome': 'Nome',
+        }

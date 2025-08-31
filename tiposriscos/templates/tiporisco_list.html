@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SGO - Tipos de Riscos
+{% endblock %}
+
+{% block content %}
+
+<div class="row mb-3">
+  <h3 class="display-4">Lista de Tipos de Risco</h3>
+  <div class="col-md-6">
+    <form method="get" action="{% url 'tiporisco_list' %}">
+      <div class="input-group">
+        <input type="text" class="form-control" name="nome" placeholder="Nome" value="{{ request.GET.nome }}">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  {% if perms.tiposriscos.add_tiporisco %}
+  <div class="col-md-6">
+    <a href="{% url 'tiporisco_create' %}" class="btn btn-success float-end">
+      <i class="bi bi-plus"></i> Novo Tipo de Risco
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tiporisco in tiposriscos %}
+      <tr>
+        <td>
+          <a href="{% url 'tiporisco_detail' tiporisco.id %}" class="text-primary fw-semibold">
+            {{ tiporisco.id }}
+          </a>
+        </td>
+        <td>{{ tiporisco.nome }}</td>
+        <td>
+          <a href="{% url 'tiporisco_detail' tiporisco.id %}" class="btn btn-info btn-sm">
+            <i class="bi bi-eye"></i>
+          </a>
+
+          {% if perms.tiposriscos.change_tiporisco %}
+          <a href="{% url 'tiporisco_update' tiporisco.id %}" class="btn btn-warning btn-sm">
+            <i class="bi bi-pencil"></i>
+          </a>
+          {% endif %}
+
+          {% if perms.tiposriscos.delete_tiporisco %}
+          <a href="{% url 'tiporisco_delete' tiporisco.id %}" class="btn btn-danger btn-sm btn-delete">
+            <i class="bi bi-trash"></i>
+          </a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% include 'components/_pagination.html' %}
+
+{% endblock %}
