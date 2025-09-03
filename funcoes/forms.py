@@ -9,5 +9,5 @@ class FuncaoForm(forms.ModelForm):
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'name': 'Nome',
+            'nome': 'Nome',
         }

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h3 class="display-4">Detalhes da Exame</h3>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.nome }}</h3>
+        <p class="card-text">Validade: <strong>{{ object.validade }}</strong></p>
+      </div>
+    </div>
+
+    <a href="{% url 'exame_list' %}" class="btn btn-secondary mt-3">Voltar para a Lista de Exames</a>
+  </div>
+{% endblock %}

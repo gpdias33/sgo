@@ -1,7 +1,7 @@
-{% load static %}
+
 <div class="d-flex">
   <!-- Sidebar -->
-  <div class="sidebar bg-white shadow-sm w-64 fixed h-full">
+  <div class="sidebar bg-white shadow-sm w-64 fixed h-full min-height: 100vh transition: all 0.3s">
     <div class="p-4 border-b border-gray-200">
       <h1 class="text-xl font-semibold text-blue-600">
           <i class="bi bi-heart-pulse-fill mr-2"></i>MedOcup
@@ -11,7 +11,7 @@
     <div class="p-4">
       <ul class="space-y-2">
         <li>
-          <a href="{% url 'home' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg active-link">
+          <a href="{% url 'home' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg active-link list-style-type: none">
             <i class="bi bi-house-door mr-3 text-blue-500"></i>
             <span class="ms-1">Home</span>
           </a>
@@ -24,42 +24,54 @@
           </a>
         </li>
         {% endif %}
+        {% if perms.grupos.view_grupo %}
         <li>
           <a href="{% url 'grupo_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
-              <i class="bi bi-collection-fill mr-3 text-blue-500"></i>
-              <span>Grupos</span>
+            <i class="bi bi-collection-fill mr-3 text-blue-500"></i>
+            <span>Grupos</span>
           </a>
         </li>
+        {% endif %}
+        {% if perms.exames.view_exame %}
         <li>
-          <a href="#exames" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
-              <i class="bi bi-clipboard2-pulse mr-3 text-blue-500"></i>
-              <span>Exames</span>
+          <a href="{% url 'exame_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+            <i class="bi bi-clipboard2-pulse mr-3 text-blue-500"></i>
+            <span>Exames</span>
           </a>
         </li>
+        {% endif %}
+        {% if perms.riscos.view_risco %}
         <li>
           <a href="{% url 'risco_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
-              <i class="bi bi-exclamation-triangle-fill mr-3 text-blue-500"></i>
-              <span>Riscos</span>
+            <i class="bi bi-exclamation-triangle-fill mr-3 text-blue-500"></i>
+            <span>Riscos</span>
           </a>
         </li>
+        {% endif %}
+        {% if perms.setores.view_setor %}
         <li>
           <a href="{% url 'setor_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
-              <i class="bi bi-building-fill mr-3 text-blue-500"></i>
-              <span>Setores</span>
+            <i class="bi bi-building-fill mr-3 text-blue-500"></i>
+            <span>Setores</span>
           </a>
         </li>
+        {% endif %}
+        {% if perms.tiposexames.view_tipoexame %}
         <li>
           <a href="{% url 'tipoexame_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
-              <i class="bi bi-clipboard2-check-fill mr-3 text-blue-500"></i>
-              <span>Tipos de Exame</span>
+            <i class="bi bi-clipboard2-check-fill mr-3 text-blue-500"></i>
+            <span>Tipos de Exame</span>
           </a>
         </li>
+        {% endif %}
+        {% if perms.tiposriscos.view_tiporisco %}
         <li>
-          <a href="#tipos-riscos" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
-              <i class="bi bi-shield-exclamation mr-3 text-blue-500"></i>
-              <span>Tipos de Riscos</span>
+          <a href="{% url 'tiporisco_list' %}" class="sidebar-link flex items-center p-2 text-gray-700 rounded-lg">
+            <i class="bi bi-shield-exclamation mr-3 text-blue-500"></i>
+            <span>Tipos de Riscos</span>
           </a>
         </li>
+        {% endif %}
       </ul>
     </div>
     <div class="absolute bottom-0 w-full p-4 border-t border-gray-200">

@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SGO - Tipos de Riscos
+SGO - Exames
 {% endblock %}
 
 {% block content %}
 
 <div class="row mb-3">
-  <h3 class="display-4">Lista de Tipos de Risco</h3>
+  <h3 class="display-4">Lista de Exames</h3>
   <div class="col-md-6">
-    <form method="get" action="{% url 'tiporisco_list' %}">
+    <form method="get" action="{% url 'exame_list' %}">
       <div class="input-group">
         <input type="text" class="form-control" name="nome" placeholder="Nome" value="{{ request.GET.nome }}">
         <button type="submit" class="btn btn-primary">
@@ -18,10 +18,10 @@ SGO - Tipos de Riscos
       </div>
     </form>
   </div>
-  {% if perms.tiposriscos.add_tiporisco %}
+  {% if perms.exames.add_exame %}
   <div class="col-md-6">
-    <a href="{% url 'tiporisco_create' %}" class="btn btn-success float-end">
-      <i class="bi bi-plus"></i> Novo Tipo de Risco
+    <a href="{% url 'exame_create' %}" class="btn btn-success float-end">
+      <i class="bi bi-plus"></i> Novo Exame
     </a>
   </div>
   {% endif %}
@@ -33,31 +33,33 @@ SGO - Tipos de Riscos
       <tr>
         <th>ID</th>
         <th>Nome</th>
+        <th>Validade (dias)</th>
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
-      {% for tiporisco in tiposriscos %}
+      {% for exame in exames %}
       <tr>
         <td>
-          <a href="{% url 'tiporisco_detail' tiporisco.id %}" class="text-primary fw-semibold">
-            {{ tiporisco.id }}
+          <a href="{% url 'exame_detail' exame.id %}" class="text-primary fw-semibold">
+            {{ exame.id }}
           </a>
         </td>
-        <td>{{ tiporisco.nome }}</td>
+        <td>{{ exame.nome }}</td>
+        <td>{{ exame.validade }}</td>
         <td>
-          <a href="{% url 'tiporisco_detail' tiporisco.id %}" class="btn btn-info btn-sm">
+          <a href="{% url 'exame_detail' exame.id %}" class="btn btn-info btn-sm">
             <i class="bi bi-eye"></i>
           </a>
 
-          {% if perms.tiposriscos.change_tiporisco %}
-          <a href="{% url 'tiporisco_update' tiporisco.id %}" class="btn btn-warning btn-sm">
+          {% if perms.exames.change_exame %}
+          <a href="{% url 'exame_update' exame.id %}" class="btn btn-warning btn-sm">
             <i class="bi bi-pencil"></i>
           </a>
           {% endif %}
 
-          {% if perms.tiposriscos.delete_tiporisco %}
-          <a href="{% url 'tiporisco_delete' tiporisco.id %}" class="btn btn-danger btn-sm btn-delete">
+          {% if perms.exames.delete_exame %}
+          <a href="{% url 'exame_delete' exame.id %}" class="btn btn-danger btn-sm btn-delete">
             <i class="bi bi-trash"></i>
           </a>
           {% endif %}
